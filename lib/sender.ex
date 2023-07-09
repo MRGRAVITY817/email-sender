@@ -5,4 +5,8 @@ defmodule Sender do
 
     {:ok, "email_sent"}
   end
+
+  def notify_all(emails) do
+    Enum.each(emails, &send_email/1)
+  end
 end
