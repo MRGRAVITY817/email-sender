@@ -29,3 +29,14 @@ Task.async(fn -> Sender.send_email("hi@world.com") end) |> Task.await()
 # If nil, task is still running. Else, the task is ready.
 Task.yield(task)
 ```
+
+### `Task.async_stream()`
+
+`Task.async_stream(fn, option)` will automatically allocate concurrent jobs according to number of machine cores. Like `Task.await`, by default it waits 5 seconds to operate.
+
+There are some `option`s you can set.
+
+- `max_concurrency`: Numbers of channel to run concurrent task.
+- `ordered`: Run tasks in same order as it's given.
+- `timeout`: Timeout to await task. Default 5 secs.
+- `on_timeout`: What to do after timeout.
