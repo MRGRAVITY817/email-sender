@@ -1,6 +1,9 @@
 # Sender
 
-Practice Elixir `Task` module.
+Practice Elixir `Task` module, by improving and email sender.
+
+Elixir's `Task` is awesome for concurrently running one-off function.  
+Which means it terminates the allocated process after the callback is done.
 
 ## WIL from this project
 
@@ -54,3 +57,9 @@ def notify_all(emails) do
   |> Enum.to_list()
 end
 ```
+
+### Supervisor's strategy for restarting dead process
+
+• `:temporary` option which never restarts processes
+• `:transient` will restart child processes, but only when they exit with an error
+• :`permanent` always restarts children, keeping them running, even when they try to shut down without an error
