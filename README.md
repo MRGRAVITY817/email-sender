@@ -1,15 +1,17 @@
 # Sender
 
-Practice Elixir `Task` module, by improving and email sender.
-
-Elixir's `Task` is awesome for concurrently running one-off function.  
-Which means it terminates the allocated process after the callback is done.
+Learn concurrent data processing in Elixir, by improving and email sender.
 
 ## WIL from this project
 
 ### `.iex.exs`
 
 - Create `.iex.exs` file to define default value that can be used in iex.
+
+### What is `Task` module?
+
+Elixir's `Task` is awesome for concurrently running one-off function.  
+Which means it terminates the allocated process after the callback is done.
 
 ### `Task.async/await/yield`
 
@@ -65,6 +67,10 @@ end
 • `:temporary` option which never restarts processes
 • `:transient` will restart child processes, but only when they exit with an error
 • :`permanent` always restarts children, keeping them running, even when they try to shut down without an error
+
+### What is `GenServer`?
+
+`Task` is one-off style, if you want a generic server like concurrency then we would use `GenServer`. Unless we explicitly call GenServer to be stopped, it will pertain the job by serving the Elixir server process.
 
 ### `GenServer.init()`
 
