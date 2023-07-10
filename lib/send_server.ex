@@ -57,4 +57,8 @@ defmodule SendServer do
 
     {:noreply, Map.put(state, :emails, retried ++ done)}
   end
+
+  def terminate(reason, _state) do
+    IO.puts("Terminating with reason #{reason}")
+  end
 end
