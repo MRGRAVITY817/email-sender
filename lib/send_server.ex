@@ -9,4 +9,21 @@ defmodule SendServer do
 
     {:ok, state}
   end
+
+  def handle_call(:get_state, _from, state) do
+    {
+      :reply,
+      # to caller
+      state,
+      # to process
+      state
+    }
+  end
+
+  def handle_cast({:send, email}, state) do
+    Sender.send_email(email)
+    emails = [%{email: email, status: "sent", retries: 0}] ++ state.emails
+
+    {:noreply, %{state | emails: emails}}
+  end
 end
