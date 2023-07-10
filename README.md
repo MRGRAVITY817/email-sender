@@ -40,3 +40,17 @@ There are some `option`s you can set.
 - `ordered`: Run tasks in same order as it's given.
 - `timeout`: Timeout to await task. Default 5 secs.
 - `on_timeout`: What to do after timeout.
+
+### Ignore some of the failed tasks
+
+We can tell _supervisor_ not to crash the parent process when child process crashes. This is called _breaking the link_.
+
+We can break the link with `Task.Supervisor.async_stream_nolink()`.
+
+```elixir
+def notify_all(emails) do
+  Sender.EmailTaskSupervisor
+  |> Task.Supervisor.async_stream_nolink(emails, &send_email/1)
+  |> Enum.to_list()
+end
+```
