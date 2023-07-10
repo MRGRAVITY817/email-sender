@@ -7,6 +7,8 @@ Which means it terminates the allocated process after the callback is done.
 
 ## WIL from this project
 
+### `.iex.exs`
+
 - Create `.iex.exs` file to define default value that can be used in iex.
 
 ### `Task.async/await/yield`
@@ -63,3 +65,9 @@ end
 • `:temporary` option which never restarts processes
 • `:transient` will restart child processes, but only when they exit with an error
 • :`permanent` always restarts children, keeping them running, even when they try to shut down without an error
+
+### `GenServer.init()`
+
+This is the very first callback function that is called when we start a GenServer. Keep in mind _not to_ put heavy setups like database fetching in `init()`, since it should be very fast.
+
+To setup some stuffs, you better take a look with `handle_continue()`
